@@ -10,6 +10,18 @@ class DB{
     for (var i = 0; i < dt.length; i++) {
         output += dt[i].charCodeAt(0).toString(2) + " ";
     }
-    return output.replaceAll("0", this.code[0]).replaceAll("1",this.code[1]);
+    let separate = output.split(" ")
+    let se1s = [];
+    let se2s = [];
+    for(s in separate){
+      if(eval(s % 2) == 0){
+        se2s.push(separate[s])
+      }
+      else{
+        se1s.push(separate[s])
+      }
+    }
+    console.log(se1s)
+    console.log(se2s)
   }
 }
