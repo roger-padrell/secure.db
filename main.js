@@ -13,15 +13,33 @@ class DB{
     let separate = output.split(" ")
     let se1s = [];
     let se2s = [];
-    for(s in separate){
+    for(let s in separate){
       if(eval(s % 2) == 0){
-        se2s.push(separate[s])
-      }
-      else{
         se1s.push(separate[s])
       }
+      else{
+        se2s.push(separate[s])
+      }
     }
-    console.log(se1s)
-    console.log(se2s)
+
+    for(let s in se1s){
+      se1s[s] = se1s[s].replaceAll("0", this.code[0]).replaceAll("1", this.code[1]);
+    }
+    for(let s in se2s){
+      se2s[s] = se2s[s].replaceAll("0", this.code[2]).replaceAll("1", this.code[3]);
+    }
+    
+    for(let s in separate){
+      if(eval(s % 2) == 0){
+        separate[s] = se1s[0];
+        se1s.shift()
+      }
+      else{
+        separate[s] = se2s[0];
+        se2s.shift()
+      }
+    }
+    separate.pop()
+    return separate.toString().replaceAll(",", " ");
   }
 }
