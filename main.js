@@ -7,7 +7,7 @@ class DB{
   }
   compress(dt){
     let output = "";
-    for (var i = 0; i < input.length; i++) {
+    for (var i = 0; i < dt.length; i++) {
         output += dt[i].charCodeAt(0).toString(2) + " ";
     }
     return output;
